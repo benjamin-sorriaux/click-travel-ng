@@ -5,12 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LogoComponent } from './logo/logo.component';
+import { TicketsComponent } from './tickets/tickets.component';
+import { DestinationsComponent } from './destinations/destinations.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
-    LogoComponent
-  ],
+    LogoComponent,
+    TicketsComponent,
+      DestinationsComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

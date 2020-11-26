@@ -14,4 +14,8 @@ export class ClickTravelService {
     return this.httpClient.get('https://travel-api.clicksomeone.com/destinations');
   }
 
+  getTickets() {
+    return this.httpClient.get(`https://travel-api.clicksomeone.com/tickets`);
+  }
+
 }
