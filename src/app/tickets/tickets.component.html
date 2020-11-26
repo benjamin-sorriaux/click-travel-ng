@@ -1,3 +1,71 @@
 <div class="links">
-  <a *ngFor="let ticket of tickets" class="giant-button">{{ ticket.flight }}</a>
+  <a *ngFor="let ticket of tickets" class="giant-button" (click)="setSelectedTicket(ticket)">{{ ticket.flight }}</a>
 </div>
+
+<div *ngIf="selectedTicket">
+  <table class="ticket-table">
+    <thead class="ticket-thead">
+      <th class="left-col left-col-top-rounded separated" scope="col">
+        <tbody>
+          <th scope="col">
+            Boarding Pass<br/><small>First Class</small>
+          </th>
+          <th scope="col">
+            <i class="fas fa-plane fa-2x ml"></i>
+          </th>
+        </tbody>
+      </th>
+      <th class="right-col right-col-top-rounded" scope="col">
+        <tbody>
+          <th scope="col">
+            Boarding Pass<br/><small>First Class</small>
+          </th>
+          <th scope="col">
+            <i class="fas fa-plane fa-2x ml"></i>
+          </th>
+        </tbody>
+      </th>
+    </thead>
+    <tbody class="ticket-tbody">
+      <tr>
+        <td class="separated"><span class="muted-text">PASSENGER</span><br/>{{ selectedTicket.passenger | uppercase }}</td>
+        <td><span class="muted-text">PASSENGER</span><br/>{{ selectedTicket.passenger | uppercase }}</td>
+      </tr>
+      <tr>
+        <td class="flex separated">
+          <div><span class="muted-text">FLIGHT</span><br/>{{ selectedTicket.flight }}</div>
+          <div><span class="muted-text">FROM</span><br/>{{ selectedTicket.from }}</div>
+          <div><span class="muted-text">TO</span><br/>{{ selectedTicket.to }}</div>
+          <div><span class="muted-text">CLASS</span><br/>{{ selectedTicket.class | uppercase }}</div></td>
+        <td>
+          <tbody>
+            <th class="col" scope="col"><span class="muted-text">GATE</span><br/><span class="flight-info">{{ selectedTicket.gate }}</span></th>
+            <th class="col" scope="col"><span class="muted-text">TIME</span><br/><span class="flight-info">{{ selectedTicket.time | date:'HH:mm' }}</span></th>
+            <th class="col" scope="col"><span class="muted-text">SEAT</span><br/><span class="flight-info">{{ selectedTicket.seat }}</span></th>
+          </tbody>
+        </td>
+      </tr>
+      <tr>
+        <td class="flex separated">
+          <div><span class="muted-text">GATE</span><br/><span class="flight-info">{{ selectedTicket.gate }}</span></div>
+          <div><span class="muted-text">TIME</span><br/><span class="flight-info">{{ selectedTicket.time | date:'HH:mm' }}</span></div>
+          <div><span class="muted-text">SEAT</span><br/><span class="flight-info">{{ selectedTicket.seat }}</span></div>
+          <img src="https://cdn.pixabay.com/photo/2014/04/02/16/19/barcode-306926__340.png" width="100">
+        </td>
+        <td>
+          <img src="https://cdn.pixabay.com/photo/2014/04/02/16/19/barcode-306926__340.png" width="100">
+        </td>
+      </tr>
+    </tbody>
+    <tfoot class="ticket-tfoot">
+      <th class="separated left-col-bottom-rounded">
+        <br/>
+      </th>
+      <th class="right-col-bottom-rounded">
+        <br/>
+      </th>
+    </tfoot>
+  </table>
+</div>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>

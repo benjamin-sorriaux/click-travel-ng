@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { ClickTravelService } from '../click-travel.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { threadId } from 'worker_threads';
+import { ActivatedRoute } from '@angular/router';
+import { Ticket } from '../models/ticket';
 
 @Component({
   selector: 'app-tickets',
@@ -18,6 +18,12 @@ export class TicketsComponent  {
     this.clickTravelService.getTickets().pipe(
       map(tickets => tickets.filter(ticket => ticket.to === this.code))
     ).subscribe(tickets => this.tickets = tickets);
+  }
+
+  selectedTicket: Ticket;
+
+  setSelectedTicket(ticket) {
+    this.selectedTicket = ticket;
   }
 
   code: string;
